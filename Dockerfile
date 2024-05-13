@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     libpango1.0-dev \
     librsvg2-dev \
     xdg-utils \
+    texlive \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
     ffmpeg && rm -rf /var/lib/apt/lists/*  # ffmpegを追加し、コメントをこの行に移動
 
 # 必要なPythonパッケージのインストール
