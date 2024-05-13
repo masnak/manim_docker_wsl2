@@ -37,48 +37,48 @@ class SineCurveUnitCircle(Scene):  # Sceneクラスを継承する新しいク�
         self.add(circle)  # 単位円をシーンに追加します。
         self.circle = circle  # 単位円をインスタンス変数に保持します。
 
-    def move_dot_and_draw_curve(self):
-        orbit = self.circle
-        origin_point = self.origin_point
+    def move_dot_and_draw_curve(self): # 点を動かして曲線を描画するメソッドを定義します。
+        orbit = self.circle # 単位円を軌道として設定します。
+        origin_point = self.origin_point # 原点の位置を取得します。
 
-        dot = Dot(radius=0.08, color=YELLOW)
-        dot.move_to(orbit.point_from_proportion(0))
-        self.t_offset = 0
-        rate = 0.25
+        dot = Dot(radius=0.08, color=YELLOW) # 点を作成します。
+        dot.move_to(orbit.point_from_proportion(0)) # 点を単位円の原点に移動します。
+        self.t_offset = 0 # 時間オフセットを設定します。
+        rate = 0.25 # レートを設定します。
 
-        def go_around_circle(mob, dt):
-            self.t_offset += (dt * rate)
+        def go_around_circle(mob, dt): # 点を円周上を動かす関数を定義します。
+            self.t_offset += (dt * rate) # 時間オフセットを更新します。
             # print(self.t_offset)
-            mob.move_to(orbit.point_from_proportion(self.t_offset % 1))
+            mob.move_to(orbit.point_from_proportion(self.t_offset % 1)) # 点を円周上を動かします。
 
-        def get_line_to_circle():
-            return Line(origin_point, dot.get_center(), color=BLUE)
+        def get_line_to_circle(): # 点と円の間の線を取得する関数を定義します。
+            return Line(origin_point, dot.get_center(), color=BLUE) # 点と円の間の線を作成して返します。
 
-        def get_line_to_curve():
-            x = self.curve_start[0] + self.t_offset * 4
-            y = dot.get_center()[1]
-            return Line(dot.get_center(), np.array([x,y,0]), color=YELLOW_A, stroke_width=2 )
+        def get_line_to_curve(): # 点と曲線の間の線を取得する関数を定義します。
+            x = self.curve_start[0] + self.t_offset * 4 # 線のX座標を計算します。
+            y = dot.get_center()[1] # 線のY座標を計算します。
+            return Line(dot.get_center(), np.array([x,y,0]), color=YELLOW_A, stroke_width=2 ) # 点と曲線の間の線を作成して返します。
 
 
-        self.curve = VGroup()
-        self.curve.add(Line(self.curve_start,self.curve_start))
-        def get_curve():
-            last_line = self.curve[-1]
-            x = self.curve_start[0] + self.t_offset * 4
-            y = dot.get_center()[1]
-            new_line = Line(last_line.get_end(),np.array([x,y,0]), color=YELLOW_D)
-            self.curve.add(new_line)
+        self.curve = VGroup() # 曲線を格納するVGroupを作成します。
+        self.curve.add(Line(self.curve_start,self.curve_start)) # 曲線の開始点を追加します。
+        def get_curve(): # 曲線を取得する関数を定義します。
+            last_line = self.curve[-1] # 最後の線を取得します。
+            x = self.curve_start[0] + self.t_offset * 4 # 線のX座標を計算します。
+            y = dot.get_center()[1] # 線のY座標を計算します。
+            new_line = Line(last_line.get_end(),np.array([x,y,0]), color=YELLOW_D) # 新しい線を作成します。
+            self.curve.add(new_line) # 新しい線を曲線に追加します。
 
-            return self.curve
+            return self.curve # 曲線を返します。
 
-        dot.add_updater(go_around_circle)
+        dot.add_updater(go_around_circle) # 点を円周上を動かすアップデータを追加します。
 
-        origin_to_circle_line = always_redraw(get_line_to_circle)
-        dot_to_curve_line = always_redraw(get_line_to_curve)
-        sine_curve_line = always_redraw(get_curve)
+        origin_to_circle_line = always_redraw(get_line_to_circle) # 原点と円の間の線を常に再描画します。
+        dot_to_curve_line = always_redraw(get_line_to_curve) # 点と曲線の間の線を常に再描画します。
+        sine_curve_line = always_redraw(get_curve) # 曲線を常に再描画します。
 
-        self.add(dot)
-        self.add(orbit, origin_to_circle_line, dot_to_curve_line, sine_curve_line)
-        self.wait(8.5)
+        self.add(dot) # 点をシーンに追加します。
+        self.add(orbit, origin_to_circle_line, dot_to_curve_line, sine_curve_line) # 軌道、線、曲線をシーンに追加します。
+        self.wait(8.5) # 8.5秒間待機します。
 
-        dot.remove_updater(go_around_circle)
+        dot.remove_updater(go_around_circle) # 点のアップデータを削除します。

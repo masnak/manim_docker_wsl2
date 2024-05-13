@@ -1,6 +1,6 @@
 from manim import *
 
-class SimpleCircle(Scene):
+class SimpleCircle(Scene): # Sceneクラスを継承する新しいクラスを定義します。
     def construct(self):
         # 円を作成
         circle = Circle(color=BLUE, fill_opacity=0.5)
