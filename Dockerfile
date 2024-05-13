@@ -28,7 +28,7 @@ COPY . /manim
 ENTRYPOINT ["manim"]
 
 # X11ソケットの使用を許可（Dockerコンテナ内でGUIを有効にする）
-ENV DISPLAY=host.docker.internal:0.0
+# ENV DISPLAY=host.docker.internal:0.0
 
 # ビルド
 # docker build -t manim-docker .
@@ -42,3 +42,4 @@ ENV DISPLAY=host.docker.internal:0.0
 
 # docker container内部で実行
 # manim -p -ql simple_circle.py SimpleCircle
+# manim -p -ql sine_curve_unit_circle.py SineCurveUnitCircle
