@@ -9,7 +9,7 @@ class SineCurveUnitCircle(Scene):  # Sceneクラスを継承する新しいク�
         self.wait()  # アニメーションの最後に待機します。
 
     def show_axis(self):  # 軸を表示するメソッドを定義します。
-        x_start = np.array([-6,0,0])  # X軸の開始点を設定します。
+        x_start = np.array([-20,0,0])  # X軸の開始点を設定します。
         x_end = np.array([6,0,0])  # X軸の終了点を設定します。
         y_start = np.array([-4,-2,0])  # Y軸の開始点を設定します（ここは間違っているかもしれません）。
         y_end = np.array([-4,2,0])  # Y軸の終了点を設定します。
@@ -54,18 +54,31 @@ class SineCurveUnitCircle(Scene):  # Sceneクラスを継承する新しいク�
         def get_line_to_circle(): # 点と円の間の線を取得する関数を定義します。
             return Line(origin_point, dot.get_center(), color=BLUE) # 点と円の間の線を作成して返します。
 
+        # def get_line_to_curve(): # 点と曲線の間の線を取得する関数を定義します。
+        #     x = self.curve_start[0] + self.t_offset * 4 # 線のX座標を計算します。
+        #     y = dot.get_center()[1] # 線のY座標を計算します。
+        #     return Line(dot.get_center(), np.array([x,y,0]), color=YELLOW_A, stroke_width=2 ) # 点と曲線の間の線を作成して返します。
+
         def get_line_to_curve(): # 点と曲線の間の線を取得する関数を定義します。
             x = self.curve_start[0] + self.t_offset * 4 # 線のX座標を計算します。
-            y = dot.get_center()[1] # 線のY座標を計算します。
+            y = np.sin(self.t_offset * 2 * np.pi) # 線のY座標を計算します。
             return Line(dot.get_center(), np.array([x,y,0]), color=YELLOW_A, stroke_width=2 ) # 点と曲線の間の線を作成して返します。
-
 
         self.curve = VGroup() # 曲線を格納するVGroupを作成します。
         self.curve.add(Line(self.curve_start,self.curve_start)) # 曲線の開始点を追加します。
+        # def get_curve(): # 曲線を取得する関数を定義します。
+        #     last_line = self.curve[-1] # 最後の線を取得します。
+        #     x = self.curve_start[0] + self.t_offset * 4 # 線のX座標を計算します。
+        #     y = dot.get_center()[1] # 線のY座標を計算します。
+        #     new_line = Line(last_line.get_end(),np.array([x,y,0]), color=YELLOW_D) # 新しい線を作成します。
+        #     self.curve.add(new_line) # 新しい線を曲線に追加します。
+
+            # return self.curve # 曲線を返します。
+        
         def get_curve(): # 曲線を取得する関数を定義します。
             last_line = self.curve[-1] # 最後の線を取得します。
             x = self.curve_start[0] + self.t_offset * 4 # 線のX座標を計算します。
-            y = dot.get_center()[1] # 線のY座標を計算します。
+            y = np.sin(self.t_offset * 2 * np.pi) # 線のY座標を計算します。
             new_line = Line(last_line.get_end(),np.array([x,y,0]), color=YELLOW_D) # 新しい線を作成します。
             self.curve.add(new_line) # 新しい線を曲線に追加します。
 
@@ -82,3 +95,4 @@ class SineCurveUnitCircle(Scene):  # Sceneクラスを継承する新しいク�
         self.wait(8.5) # 8.5秒間待機します。
 
         dot.remove_updater(go_around_circle) # 点のアップデータを削除します。
+
