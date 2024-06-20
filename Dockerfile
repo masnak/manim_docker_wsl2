@@ -5,6 +5,7 @@ FROM python:3.9-slim
 RUN apt-get update && apt-get install -y \
     pkg-config \
     gcc \
+    g++ \
     libcairo2-dev \
     libpango1.0-dev \
     librsvg2-dev \
