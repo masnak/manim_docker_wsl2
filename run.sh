@@ -6,7 +6,7 @@
 DISPLAY_VAR=${DISPLAY}
 
 # Manimのスクリプトファイルのパスを設定
-MANIM_SCRIPT_PATH="/manim/simple_circle.py"
+MANIM_SCRIPT_PATH="/manim/"
 
 # Dockerコンテナの実行
 docker run -it --rm \
