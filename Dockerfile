@@ -44,3 +44,8 @@ ENTRYPOINT ["manim"]
 # docker container内部で実行
 # manim -p -ql simple_circle.py SimpleCircle
 # manim -p -ql sine_curve_unit_circle.py SineCurveUnitCircle
+# manim -p -ql sine_curve_unit_circle.py SineCurveUnitCircle -n 100
+# manim -p -ql sin_cos2.py SineCosine2
+# manim -p -ql sine_cosine.py SineCosine
+# manim -p -ql unit_circle.py UnitCircle
+
