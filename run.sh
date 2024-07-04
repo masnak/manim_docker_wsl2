@@ -1,18 +1,14 @@
 #!/bin/bash
 
-# 実行スクリプト
+# 現在のディスプレイ設定を取得
+DISPLAY_SETTING=$DISPLAY
 
-# DISPLAY環境変数の設定
-DISPLAY_VAR=${DISPLAY}
+# カレントディレクトリを取得
+CURRENT_DIR=$(pwd)
 
-# Manimのスクリプトファイルのパスを設定
-MANIM_SCRIPT_PATH="/manim/"
-
-# Dockerコンテナの実行
+# Dockerコンテナを実行
 docker run -it --rm \
-    -e DISPLAY=$DISPLAY_VAR \
+    -e DISPLAY=$DISPLAY_SETTING \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -v $(pwd):/manim \
-    manim-docker manim -p -ql ${MANIM_SCRIPT_PATH} SimpleCircle
-
-echo "Manimの実行が完了しました。"
+    -v $CURRENT_DIR:/manim \
+    --entrypoint /bin/bash manim-docker
