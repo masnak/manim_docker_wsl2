@@ -8,6 +8,7 @@ CURRENT_DIR=$(pwd)
 
 # Dockerコンテナを実行
 docker run -it --rm \
+    --name my_manim \
     -e DISPLAY=$DISPLAY_SETTING \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v $CURRENT_DIR:/manim \
