@@ -6,7 +6,7 @@ class ComplexPlaneScene(Scene):
         self.camera.background_color = BLACK
 
         # 実数軸と虚数軸を描画
-        plane = ComplexPlane().add_coordinates()
+        plane = ComplexPlane()
 
         # 単位円を定義
         unit_circle = Circle(radius=1, color=WHITE)
