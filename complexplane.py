@@ -1,3 +1,5 @@
+# manim -p -ql complexplane.py ComplexPlaneScene
+
 from manim import *
 
 class ComplexPlaneScene(Scene):
@@ -17,8 +19,8 @@ class ComplexPlaneScene(Scene):
 
         # グリッドと単位円を画面いっぱいに拡大
         self.play(
-            plane.animate.scale(3.5),
-            unit_circle.animate.scale(3.5)
+            plane.animate.scale(3.3),
+            unit_circle.animate.scale(3.3)
         )
 
         # 点滅しながら動く点を描画
