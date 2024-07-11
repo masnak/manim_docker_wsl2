@@ -37,44 +37,55 @@ class TaylorSeriesSin(Scene):
         first_eight_terms_graph = axes.plot(lambda x: taylor_series_sin(x, 8), color=TEAL)
         first_nine_terms_graph = axes.plot(lambda x: taylor_series_sin(x, 9), color=GOLD)
 
+        # Formulas for each term
+        first_term_formula = MathTex(r"f(x) = x").to_edge(UR)
+        first_two_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!}").to_edge(UR)
+        first_three_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!}").to_edge(UR)
+        first_four_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!}").to_edge(UR)
+        first_five_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!}").to_edge(UR)
+        first_six_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!}").to_edge(UR)
+        first_seven_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!}").to_edge(UR)
+        first_eight_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!} - \frac{x^{15}}{15!}").to_edge(UR)
+        first_nine_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!} - \frac{x^{15}}{15!} + \frac{x^{17}}{17!}").to_edge(UR)
+
         # Add the axes and the sin(x) graph
         self.play(Create(axes), Create(sin_graph), Write(x_label), Write(y_label))
         self.wait(2)
 
-        # Add the first term graph
-        self.play(Create(first_term_graph))
+        # Add the first term graph and formula
+        self.play(Create(first_term_graph), Write(first_term_formula))
         self.wait(2)
 
-        # Add the first two terms graph
-        self.play(Transform(first_term_graph, first_two_terms_graph))
+        # Add the first two terms graph and formula
+        self.play(Transform(first_term_graph, first_two_terms_graph), Transform(first_term_formula, first_two_terms_formula))
         self.wait(2)
 
-        # Add the first three terms graph
-        self.play(Transform(first_term_graph, first_three_terms_graph))
+        # Add the first three terms graph and formula
+        self.play(Transform(first_term_graph, first_three_terms_graph), Transform(first_term_formula, first_three_terms_formula))
         self.wait(2)
 
-        # Add the first four terms graph
-        self.play(Transform(first_term_graph, first_four_terms_graph))
+        # Add the first four terms graph and formula
+        self.play(Transform(first_term_graph, first_four_terms_graph), Transform(first_term_formula, first_four_terms_formula))
         self.wait(2)
 
-        # Add the first five terms graph
-        self.play(Transform(first_term_graph, first_five_terms_graph))
+        # Add the first five terms graph and formula
+        self.play(Transform(first_term_graph, first_five_terms_graph), Transform(first_term_formula, first_five_terms_formula))
         self.wait(2)
 
-        # Add the first six terms graph
-        self.play(Transform(first_term_graph, first_six_terms_graph))
+        # Add the first six terms graph and formula
+        self.play(Transform(first_term_graph, first_six_terms_graph), Transform(first_term_formula, first_six_terms_formula))
         self.wait(2)
 
-        # Add the first seven terms graph
-        self.play(Transform(first_term_graph, first_seven_terms_graph))
+        # Add the first seven terms graph and formula
+        self.play(Transform(first_term_graph, first_seven_terms_graph), Transform(first_term_formula, first_seven_terms_formula))
         self.wait(2)
 
-        # Add the first eight terms graph
-        self.play(Transform(first_term_graph, first_eight_terms_graph))
+        # Add the first eight terms graph and formula
+        self.play(Transform(first_term_graph, first_eight_terms_graph), Transform(first_term_formula, first_eight_terms_formula))
         self.wait(2)
 
-        # Add the first nine terms graph
-        self.play(Transform(first_term_graph, first_nine_terms_graph))
+        # Add the first nine terms graph and formula
+        self.play(Transform(first_term_graph, first_nine_terms_graph), Transform(first_term_formula, first_nine_terms_formula))
         self.wait(2)
 
         # Keep the final graph on screen for a while
