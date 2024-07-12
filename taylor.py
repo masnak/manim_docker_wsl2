@@ -14,7 +14,7 @@ class TaylorSeriesSin(Scene):
 
         # Set up the axes
         axes = Axes(
-            x_range=[-2 * math.pi, 2 * math.pi, math.pi],  # x軸の範囲を-2πから2πに設定
+            x_range=[-3 * math.pi, 3 * math.pi, math.pi],  # x軸の範囲を-3πから3πに設定
             y_range=[-1.5, 1.5, 0.5],
             axis_config={"color": BLUE}
         )
@@ -38,15 +38,15 @@ class TaylorSeriesSin(Scene):
         first_nine_terms_graph = axes.plot(lambda x: taylor_series_sin(x, 9), color=GOLD)
 
         # Formulas for each term
-        first_term_formula = MathTex(r"f(x) = x").to_edge(UR)
-        first_two_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!}").to_edge(UR)
-        first_three_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!}").to_edge(UR)
-        first_four_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!}").to_edge(UR)
-        first_five_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!}").to_edge(UR)
-        first_six_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!}").to_edge(UR)
-        first_seven_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!}").to_edge(UR)
-        first_eight_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!} - \frac{x^{15}}{15!}").to_edge(UR)
-        first_nine_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!} - \frac{x^{15}}{15!} + \frac{x^{17}}{17!}").to_edge(UR)
+        first_term_formula = MathTex(r"f(x) = x").to_edge(UL)
+        first_two_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!}").to_edge(UL)
+        first_three_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!}").to_edge(UL)
+        first_four_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!}").to_edge(UL)
+        first_five_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!}").to_edge(UL)
+        first_six_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!}").to_edge(UL)
+        first_seven_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!}").to_edge(UL)
+        first_eight_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!} - \frac{x^{15}}{15!}").to_edge(UL)
+        first_nine_terms_formula = MathTex(r"f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \frac{x^9}{9!} - \frac{x^{11}}{11!} + \frac{x^{13}}{13!} - \frac{x^{15}}{15!} + \frac{x^{17}}{17!}").to_edge(UL)
 
         # Add the axes and the sin(x) graph
         self.play(Create(axes), Create(sin_graph), Write(x_label), Write(y_label))
