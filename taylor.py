@@ -15,7 +15,7 @@ class TaylorSeriesSin(Scene):
         # Set up the axes
         axes = Axes(
             x_range=[-2 * math.pi, 2 * math.pi, math.pi],  # x軸の範囲を-3πから3πに設定
-            y_range=[-4, 4, 1],  # y軸の範囲を調整
+            y_range=[-3.5, 3.5, 1],  # y軸の範囲を調整
             axis_config={"color": BLUE}
         )
 
