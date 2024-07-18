@@ -24,23 +24,32 @@ class QuaternionRotation(ThreeDScene):
         self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
         self.add(axis)
 
-        # ベクトルの定義
-        vector = np.array([1, 0, 0])
-        vector_arrow = Arrow3D(start=[0, 0, 0], end=vector, color=RED)
+        # 立方体の定義
+        cube_positions = [np.array([2, 0, 0]), np.array([4, 0, 0]), np.array([5, 0, 0])]
+        cubes = [Cube(side_length=1).move_to(pos) for pos in cube_positions]
 
-        self.add(vector_arrow)
+        for cube in cubes:
+            self.add(cube)
 
-        # 回転の定義（ここでは90度回転）
-        angle = np.pi / 2  # 90 degrees
-        quaternion = (np.cos(angle / 2), np.sin(angle / 2) * 0, np.sin(angle / 2) * 0, np.sin(angle / 2) * 1)  # Z軸周りの回転
+        # 各軸周りの回転四元数を定義
+        angle = np.pi / 4  # 45 degrees
+
+        # X軸周りの回転
+        x_axis_rotation = (np.cos(angle / 2), np.sin(angle / 2), 0, 0)
+        # Y軸周りの回転
+        y_axis_rotation = (np.cos(angle / 2), 0, np.sin(angle / 2), 0)
+        # Z軸周りの回転
+        z_axis_rotation = (np.cos(angle / 2), 0, 0, np.sin(angle / 2))
 
         # アニメーション
         num_frames = 60
-        for _ in range(num_frames):
-            vector = rotate_vector_by_quaternion(vector, quaternion)
-            new_vector_arrow = Arrow3D(start=[0, 0, 0], end=vector, color=RED)
-            self.play(Transform(vector_arrow, new_vector_arrow), run_time=0.1)
-            vector_arrow = new_vector_arrow
+        rotations = [x_axis_rotation, y_axis_rotation, z_axis_rotation]
+        for rotation in rotations:
+            for _ in range(num_frames):
+                for cube in cubes:
+                    for face in cube.family_members_with_points():
+                        face.apply_function(lambda p: rotate_vector_by_quaternion(p, rotation))
+                self.wait(0.1)
 
         self.wait()
 
